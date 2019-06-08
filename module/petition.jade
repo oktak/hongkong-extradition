@@ -1,7 +1,7 @@
 //- module
 .section.section-petition.bg-danger.text-light: .inner.text-center
   script.
-    fetch('https://sign-counter-prod-antitradition-y3b3kusenf.web.kintohub.com/list?checked=true')
+    fetch('https://sign-counter-prod-antiextradition-y3b3kusenf.web.kintohub.com/list?checked=true')
     .then(response => response.json())
     .then(signStat => {
       document.getElementById("signed_count").innerHTML = signStat.meta.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
