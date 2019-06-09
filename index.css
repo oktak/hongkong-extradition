@@ -27,10 +27,6 @@ nav {
   background-size: cover;
   border-radius: 0;
 }
-.post {
-  width: 100%;
-  overflow-wrap: break-word;
-}
 .jumbotron .text-center {
   position: absolute;
   top: 0;
@@ -98,9 +94,6 @@ h2 {
 .section-features p {
   font-size: 0.9em;
   color: #555;
-}
-.section-footer {
-  background-color: #696969;
 }
 .section-footer a {
   color: #9be;
