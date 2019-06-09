@@ -338,8 +338,8 @@ update-file = ->
     des = src.replace /\.jade$/, ".html"
     console.log(des)
     if des != "full_timeline.html" =>
-      des = "index.html"
-      src = "index.jade"
+      des = "index-en.html"
+      src = "index-en.jade"
     console.log(des)
     try 
       code = fs.read-file-sync src .toString!
@@ -352,7 +352,6 @@ update-file = ->
       console.log "[BUILD] #src failed: "
       console.log e.message
     return 
-
 
 watcher = chokidar.watch watch-path, ignored: ignore-func, persistent: true
   .on \add, update-file
