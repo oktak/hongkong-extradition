@@ -335,22 +335,22 @@ update-file = ->
         console.log e.message
 
   if type == \jade => 
-    des = src.replace /\.jade$/, ".html"
-    console.log(des)
-    if des != "full_timeline.html" =>
-      des = "index-en.html"
-      src = "index-en.jade"
-    console.log(des)
-    try 
-      code = fs.read-file-sync src .toString!
-      #if /^\/\/- ?(module|view) ?/.exec(code) => return
-      desdir = path.dirname(des)
-      if !fs.exists-sync(desdir) or !fs.stat-sync(desdir).is-directory! => mkdir-recurse desdir
-      fs.write-file-sync des, jade.render code, {filename: src, basedir: path.join(cwd)} <<< jade-extapi
-      console.log "[BUILD] #src --> #des"
-    catch
-      console.log "[BUILD] #src failed: "
-      console.log e.message
+    console.log(src)
+    for new_src in ["index.jade", "index-en.jade", "index-jp.jade"]
+      src = new_src
+      des = src.replace /\.jade$/, ".html"
+      console.log(src)
+      console.log(des)
+      try 
+        code = fs.read-file-sync src .toString!
+        #if /^\/\/- ?(module|view) ?/.exec(code) => return
+        desdir = path.dirname(des)
+        if !fs.exists-sync(desdir) or !fs.stat-sync(desdir).is-directory! => mkdir-recurse desdir
+        fs.write-file-sync des, jade.render code, {filename: src, basedir: path.join(cwd)} <<< jade-extapi
+        console.log "[BUILD] #src --> #des"
+      catch
+        console.log "[BUILD] #src failed: "
+        console.log e.message
     return 
 
 watcher = chokidar.watch watch-path, ignored: ignore-func, persistent: true

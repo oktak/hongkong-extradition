@@ -124,3 +124,9 @@ h2 {
 .sep.light-dark {
   border-bottom: 1px solid rgba(0,0,0,0.1);
 }
+.bg-telegram {
+  background-color: #08c;
+}
+.bg-telegram a {
+  color: #fff;
+}
